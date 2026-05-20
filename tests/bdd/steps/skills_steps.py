@@ -875,6 +875,12 @@ def then_agent_not_contains_skills(skills_test_environment, skills: str):
         assert not unexpected.intersection(skill_names)
 
 
+@then(parsers.parse('agent does not contain: "{skills}"'))
+def then_agent_does_not_contain_alias(skills_test_environment, skills: str):
+    """Verify agent does not contain specified skills."""
+    return then_agent_not_contains_skills(skills_test_environment, skills)
+
+
 @then('no exception is raised to caller')
 def then_no_exception_raised(skills_test_environment):
     """Verify no exception was raised during skills loading."""
